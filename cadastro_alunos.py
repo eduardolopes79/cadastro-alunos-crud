@@ -1,6 +1,7 @@
 from funcoes import (
     alunos, nota_aluno, funcao_menu, cadastrar_aluno, registrar_nota,
-    mostrar_alunos, ver_nota, remover_aluno, encerrar_programa
+    mostrar_alunos, ver_nota, remover_aluno, encerrar_programa,
+    atualizar_nota
 )
 
 
@@ -24,6 +25,9 @@ while True:
         remover_aluno()
 
     elif opcao == 6:
+        atualizar_nota()
+
+    elif opcao == 7:
         encerrar_programa()
         break
 

@@ -8,7 +8,8 @@ def funcao_menu():
         3 : 'Listar Alunos',
         4 : 'Verificar Notas',
         5 : 'Remover Aluno',
-        6 : 'Sair'
+        6 : 'Atualizar Aluno',
+        7 : 'Sair'
     }
     for k, i in menu.items():
         print(f"{k}, {i}")
@@ -20,7 +21,7 @@ def cadastrar_aluno():
     print("Aluno cadastrado.")
 
 def registrar_nota():
-    atribuir_nota = input("Digite o nome do aluno para atribuir nota: ")
+    atribuir_nota = input("Digite o nome do aluno para atribuir nota: ").strip().title()
     if atribuir_nota not in alunos:
         print("Esse aluno não está cadastrado.")
 
@@ -31,7 +32,7 @@ def registrar_nota():
             print("\nNota inválida")
 
         else:
-            nota_aluno[atribuir_nota] = [notas]
+            nota_aluno[atribuir_nota] = notas
             print(f"A nota {notas} foi adicionada pro aluno {atribuir_nota}.")
 
 def mostrar_alunos():
@@ -39,14 +40,14 @@ def mostrar_alunos():
     print(f"\n{alunos}\n")
 
 def ver_nota():
-    verificar_nota = input("Digite o nome do aluno: ")
+    verificar_nota = input("Digite o nome do aluno: ").strip().title()
     if verificar_nota not in nota_aluno:
         print("Esse aluno não foi cadastrado.")
     else:
-        print(f"\n{nota_aluno}\n")
+        print(f"\n{verificar_nota, nota_aluno[verificar_nota]}\n")
 
 def remover_aluno():
-    remover_aluno = input("Digite o nome do aluno que deseja remover: ")
+    remover_aluno = input("Digite o nome do aluno que deseja remover: ").strip().title()
     if remover_aluno not in alunos:
         print("\nEsse aluno não está cadastrado\n")
     else:
@@ -54,6 +55,19 @@ def remover_aluno():
         del nota_aluno[remover_aluno]
         print(f"\nO aluno {remover_aluno} foi removido.\n")
 
+def atualizar_nota():
+    nome_aluno = input("Digite o nome do aluno que deseja atualizar a nota: ").strip().title()
+    if nome_aluno not in alunos:
+        print("\nEsse aluno não está cadastrado.")
+
+    else:
+        atualizar_nota = int(input("Digite a nota do aluno: "))
+
+        if atualizar_nota < 0 or atualizar_nota > 10:
+            print("\nNota inválida")
+
+        else:
+            nota_aluno[nome_aluno] = atualizar_nota
+
 def encerrar_programa():
     print("\nPrograma encerrado.")
-
